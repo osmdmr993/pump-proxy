@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 import requests
+import os
 
 app = Flask(__name__)
 
@@ -10,4 +11,6 @@ def trending():
     return jsonify(data)
 
 if __name__ == "__main__":
-    os.environ.get("PORT", 10000)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
+
